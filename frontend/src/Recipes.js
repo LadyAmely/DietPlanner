@@ -9,6 +9,11 @@ import RecipeCard from "./RecipeCard";
 function Recipes(){
 
     const [recipes, setRecipes] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [sortOption, setSortOption] = useState('title');
+    const[dietTypeFilter, setDietTypeFilter] = useState('All');
+    const [calorieRange, setCalorieRange] = useState(100);
+    
 
     useEffect(() => {
         axios.get('http://localhost:5029/api/Recipe')
@@ -19,7 +24,23 @@ function Recipes(){
                 console.error('There was an error fetching the books!', error);
             });
     }, []);
-    
+
+    const filteredRecipes = recipes
+        .filter(recipe =>
+            recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        .filter(recipe =>
+            dietTypeFilter === 'All' || recipe.diet_type === dietTypeFilter
+        )
+        .sort((a, b) => {
+            if (sortOption === 'Calories') {
+                return a.calories - b.calories; 
+            } else if (sortOption === 'title') {
+                return a.title.localeCompare(b.title); 
+            }
+            return 0;
+        });
+
     return(
         <div>
             <Header/>
@@ -67,38 +88,77 @@ function Recipes(){
                     <p>Eat better every day and transform your life with balanced nutrition and mindful eating
                         habits.</p>
                     <button>Start Now</button>
-
                 </div>
-
-
             </section>
 
             <div className="recipe-select">
                 <input type="text" id="searchInput" placeholder="Search recipes..."/>
-                <select>
-                    <option value="All">All diets</option>
-                    <option value="vege">Vege</option>
-                    <option value="vegetarian">Vegetarian</option>
-                </select>
-                
                 <button className="btn search-btn">Search</button>
+                <label htmlFor="diet_type_select_id">Diet Type:</label>
+                <select id="diet_type_select_id" value={dietTypeFilter}
+                        onChange={e => setDietTypeFilter(e.target.value)}>
+                    <option value="All">All diets</option>
+                    <option value="Vegan">Vegan</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Mediterranean">Mediterranean</option>
+                    <option value="Ketogenic">Ketogenic</option>
+                    <option value="Gluten-Free">Gluten-Free</option>
+                    <option value="Low-Carb">Low-Carb</option>
+                    <option value="Low-Fat">Low-Fat</option>
+                </select>
+                <label htmlFor="prep_time_id">time:</label>
+                <select id="prep_time_id">
+                    <option value="10">10 min</option>
+                    <option value="15">15 min</option>
+                    <option value="20">20 min</option>
+                    <option value="25">25 min</option>
+                    <option value="30">30 min</option>
+                    <option value="40">40 min</option>
+                    <option value="1h">1 h</option>
+                    <option value="1.5h">1.5 h</option>
+                    <option value="2h">2 h</option>
+                    <option value="2.5h">2.5h</option>
+                    <option value="3h">3 h</option>
+                </select>
+
+
+                <label htmlFor="kcal_id">kcal:</label>
+                <select id="kcal_id">
+                    <option value="100kcal">100 kcal</option>
+                    <option value="150kcal">150 kcal</option>
+                    <option value="200kcal">200 kcal</option>
+                    <option value="250kcal">250 kcal</option>
+                    <option value="300kcal">300 kcal</option>
+                    <option value="350kcal">350 kcal</option>
+                    <option value="400kcal">400 kcal</option>
+                    <option value="450kcal">450 kcal</option>
+                    <option value="500kcal">500 kcal</option>
+                    <option value="550kcal">550 kcal</option>
+                    <option value="600kcal">600 kcal</option>
+                    <option value="650kcal">650 kcal</option>
+                    <option value="700kcal">700 kcal</option>
+                    <option value="750kcal">750 kcal</option>
+                </select>
+
 
             </div>
             <section className="recipe-database">
-                <div className="container">
+            <div className="container">
                     <h2>Recipes</h2>
 
                     <div className="recipe-list">
-                        {recipes.map(recipe=>(
-                            
+                        {filteredRecipes.map(recipe => (
+
                             <RecipeCard
                                 image={recipe.image}
                                 title={recipe.title}
                                 category={recipe.category}
+                                calories={recipe.calories}
+                                prep_time={recipe.prep_time}
+                                diet_type={recipe.diet_type}
                             />
                         ))}
 
-                        
 
                     </div>
                 </div>

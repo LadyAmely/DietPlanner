@@ -30,10 +30,22 @@
 #searchInput {
     width: 300px;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(89, 145, 92, 0.25);
     border-radius: 4px;
     font-size: 16px;
 }
+
+#searchInput:hover{
+    border-color: #49884d;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+#searchInput:focus{
+    border-color: #49884d;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    outline: none;
+}
+
 
 .search-btn {
     background-color: #66bb6a;
