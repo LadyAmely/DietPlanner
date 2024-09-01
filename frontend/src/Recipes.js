@@ -1,10 +1,24 @@
-﻿import React from 'react';
+﻿import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Header from './Header';
 import "./home.css";
 import "./search.css";
 import "./recipe-database.css";
+import RecipeCard from "./RecipeCard";
 
 function Recipes(){
+
+    const [recipes, setRecipes] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:5029/api/Recipe')
+            .then(response => {
+                setRecipes(response.data);
+            })
+            .catch(error => {
+                console.error('There was an error fetching the books!', error);
+            });
+    }, []);
     
     return(
         <div>
@@ -59,30 +73,32 @@ function Recipes(){
 
             </section>
 
-            <div className="books-select">
-                <input type="text" id="searchInput" placeholder="Szukaj przepisu..."/>
-                <button className="btn search-btn">Szukaj</button>
+            <div className="recipe-select">
+                <input type="text" id="searchInput" placeholder="Search recipes..."/>
+                <select>
+                    <option value="All">All diets</option>
+                    <option value="vege">Vege</option>
+                    <option value="vegetarian">Vegetarian</option>
+                </select>
+                
+                <button className="btn search-btn">Search</button>
+
             </div>
             <section className="recipe-database">
                 <div className="container">
-                    <h2>Baza Danych Przepisów</h2>
+                    <h2>Recipes</h2>
 
                     <div className="recipe-list">
+                        {recipes.map(recipe=>(
+                            
+                            <RecipeCard
+                                image={recipe.image}
+                                title={recipe.title}
+                                category={recipe.category}
+                            />
+                        ))}
 
-                        <div className="recipe-card">
-                            <img src="recipe1.jpg" alt="Przepis 1"/>
-                            <h3>Sałatka z Kurczakiem</h3>
-                            <p>Kategoria: Obiady</p>
-                            <p>Trudność: Łatwe</p>
-                            <button className="btn details-btn">Szczegóły</button>
-                        </div>
-                        <div className="recipe-card">
-                            <img src="recipe2.jpg" alt="Przepis 2"/>
-                            <h3>Owsianka z Owocami</h3>
-                            <p>Kategoria: Śniadania</p>
-                            <p>Trudność: Łatwe</p>
-                            <button className="btn details-btn">Szczegóły</button>
-                        </div>
+                        
 
                     </div>
                 </div>

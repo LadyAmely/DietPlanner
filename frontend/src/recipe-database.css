@@ -2,7 +2,7 @@
 
 .container {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -36,7 +36,7 @@
 }
 
 .search-btn {
-    background-color: #007BFF;
+    background-color: #66bb6a;
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -47,7 +47,7 @@
 }
 
 .search-btn:hover {
-    background-color: #0056b3;
+    background-color: #66bb6a;
 }
 
 .filters {
@@ -75,7 +75,7 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
-    width: 300px;
+    width: 400px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
