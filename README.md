@@ -6,4 +6,8 @@
 ### Recipe Database
 Access to a wide database of dietary recipes with the option to filter by calorie content, preparation time, and diet types.
 
+## License
+
+This project is licensed under the MIT License.
+
 ![DietPlanner](https://github.com/LadyAmely/DietPlanner/blob/master/diet-planner.png)
