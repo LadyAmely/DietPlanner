@@ -10,4 +10,4 @@ Access to a wide database of dietary recipes with the option to filter by calori
 
 This project is licensed under the MIT License.
 
-![DietPlanner](https://github.com/LadyAmely/DietPlanner/blob/master/diet-planner.png)
+![DietPlanner](https://github.com/LadyAmely/DietPlanner/blob/master/diet-planner-img.png)
