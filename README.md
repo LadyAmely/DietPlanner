@@ -6,6 +6,8 @@
 ### Recipe Database
 Access to a wide database of dietary recipes with the option to filter by calorie content, preparation time, and diet types.
 
+### Creating Your Own Diet Plan
+Users can easily add individual meals and precisely define the ingredients that each one consists of.
 ## License
 
 This project is licensed under the MIT License.
@@ -13,3 +15,5 @@ This project is licensed under the MIT License.
 ![DietPlanner](https://github.com/LadyAmely/DietPlanner/blob/master/diet-planner-img.png)
 
 ![DietPlanner](https://github.com/LadyAmely/DietPlanner-.NET-React.js-PostgreSQL/blob/master/diet-planner-recipes.png)
+
+![DietPlanner](https://github.com/LadyAmely/DietPlanner-.NET-React.js-PostgreSQL/blob/master/diet-planner-meal-plan.png)
