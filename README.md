@@ -22,6 +22,9 @@ The recipe database also allows you to filter by diet type, which is especially 
 ### Creating Your Own Diet Plan
 Users can easily add individual meals and precisely define the ingredients that each one consists of.
 
+#### Adding individual meals
+Users can create their own meals by adding them to the diet plan. Each meal can be customized to your own preferences, allowing you to create a personalized diet plan.
+
 ![DietPlanner](https://github.com/LadyAmely/DietPlanner-.NET-React.js-PostgreSQL/blob/master/diet-planner-meal-plan.png)
 
 ## License
