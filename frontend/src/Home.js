@@ -9,6 +9,8 @@ function Home(){
     
     const [meals, setMeals] = useState([]);
 
+    const [nutrients, setNutrient] = useState([]);
+
     const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
     const [currentDayIndex, setCurrentDayIndex] = useState(0);
@@ -28,6 +30,17 @@ function Home(){
                 console.error('Error fetching data:', error);
             });
     }, []);
+
+    useEffect(() => {
+        axios.get('http://localhost:5029/api/nutrient')
+            .then(response => {
+                setNutrient(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
+    
     
     useEffect(() => {
         axios.get('http://localhost:5029/api/plan')
@@ -51,6 +64,25 @@ function Home(){
                 </div>
             ));
     }
+
+    function calculateNutrientSummary(day) {
+        const filteredMeals = meals.filter(meal => meal.day_of_week.toLowerCase() === day.toLowerCase());
+        const summary = filteredMeals.reduce((acc, meal) => {
+            const nutrient = nutrients.find(n => n.name_of_product === meal.title_of_meal);
+            if (nutrient) {
+                acc.calories += nutrient.calories;
+                acc.proteins += nutrient.proteins;
+                acc.carbohydrates += nutrient.carbohydrates;
+                acc.fats += nutrient.fats;
+            }
+            return acc;
+        }, { calories: 0, proteins: 0, carbohydrates: 0, fats: 0 });
+
+        return summary;
+    }
+
+    const currentDay = daysOfWeek[currentDayIndex];
+    const nutrientSummary = calculateNutrientSummary(currentDay);
     
     return(
         <div>
@@ -136,19 +168,19 @@ function Home(){
                         <div className="nutrients">
                             <div className="nutrient">
                                 <span>Calories:</span>
-                                <span className="nutrient-value">1500 kcal</span>
+                                <span className="nutrient-value">{nutrientSummary.calories} kcal</span>
                             </div>
                             <div className="nutrient">
                                 <span>Protein:</span>
-                                <span className="nutrient-value">80 g</span>
+                                <span className="nutrient-value">{nutrientSummary.proteins} g</span>
                             </div>
                             <div className="nutrient">
                                 <span>Carbohydrates:</span>
-                                <span className="nutrient-value">200 g</span>
+                                <span className="nutrient-value">{nutrientSummary.carbohydrates} g</span>
                             </div>
                             <div className="nutrient">
                                 <span>Fats:</span>
-                                <span className="nutrient-value">60 g</span>
+                                <span className="nutrient-value">{nutrientSummary.fats} g</span>
                             </div>
                         </div>
                     </div>
