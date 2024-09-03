@@ -6,6 +6,8 @@
 ### Recipe Database
 Access to a wide database of dietary recipes with the option to filter by calorie content, preparation time, and diet types.
 
+### Creating Your Own Diet Plan
+Users can easily add individual meals and precisely define the ingredients that each one consists of.
 ## License
 
 This project is licensed under the MIT License.
