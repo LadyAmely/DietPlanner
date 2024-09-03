@@ -27,6 +27,10 @@ Users can create their own meals by adding them to the diet plan. Each meal can 
 
 ![DietPlanner](https://github.com/LadyAmely/DietPlanner-.NET-React.js-PostgreSQL/blob/master/diet-planner-meal-plan.png)
 
+### Creating Your Personal Profile
+
+The user profile creation functionality allows for accurate and personalized diet management by entering key personal information, calorie goals, BMI, allergies and dietary restrictions.
+
 ## License
 
 This project is licensed under the MIT License.
