@@ -67,8 +67,10 @@ function Plan() {
             .filter(meal => meal.day_of_week === day)
             .map((meal, index) => (
                 <li key={index}>
-                    {meal.title_of_meal} 
+                    <h3>{meal.type_of_meal}</h3> : <br/>{meal.title_of_meal} <br/>
+                    <h3>Ingredients</h3> : <br/> {meal.ingredients}
                 </li>
+               
             ));
     }
 
@@ -118,82 +120,82 @@ function Plan() {
             </section>
 
             <section className="meal-planner-section">
-                <h1>Twój Plan Posiłków</h1>
+                <h1>Your Meal Plan</h1>
                 <form className="meal-form" onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="day">Dzień Tygodnia:</label>
+                        <label htmlFor="day">Day of the Week:</label>
                         <select
                             id="day"
                             name="day_of_week"
                             value={formData.day_of_week}
                             onChange={handleInputChange}
                             required>
-                            <option value="" disabled>Wybierz dzień</option>
-                            <option value="monday">Poniedziałek</option>
-                            <option value="tuesday">Wtorek</option>
-                            <option value="wednesday">Środa</option>
-                            <option value="thursday">Czwartek</option>
-                            <option value="friday">Piątek</option>
-                            <option value="saturday">Sobota</option>
-                            <option value="sunday">Niedziela</option>
+                            <option value="" disabled>Select a day</option>
+                            <option value="monday">Monday</option>
+                            <option value="tuesday">Tuesday</option>
+                            <option value="wednesday">Wednesday</option>
+                            <option value="thursday">Thursday</option>
+                            <option value="friday">Friday</option>
+                            <option value="saturday">Saturday</option>
+                            <option value="sunday">Sunday</option>
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="meal-type">Typ Posiłku:</label>
+                        <label htmlFor="meal-type">Type of meal:</label>
                         <select
                             id="meal-type"
                             name="type_of_meal"
                             value={formData.type_of_meal}
                             onChange={handleInputChange}
                             required>
-                            <option value="" disabled>Wybierz posiłek</option>
-                            <option value="breakfast">Śniadanie</option>
+                            <option value="" disabled>Select a meal</option>
+                            <option value="breakfast">Breakfast</option>
                             <option value="lunch">Lunch</option>
-                            <option value="dinner">Obiad</option>
-                            <option value="snack">Przekąska</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="snack">Snack</option>
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="meal-name">Nazwa Posiłku:</label>
+                        <label htmlFor="meal-name">Name of the meal</label>
                         <input
                             type="text"
                             id="meal-name"
                             name="title_of_meal"
                             value={formData.title_of_meal}
                             onChange={handleInputChange}
-                            placeholder="np. Owsianka z owocami"
+                            placeholder="e.g. Oatmeal with fruit"
                             required />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="ingredients">Składniki:</label>
+                        <label htmlFor="ingredients">Ingredients:</label>
                         <textarea
                             id="ingredients"
                             name="ingredients"
                             value={formData.ingredients}
                             onChange={handleInputChange}
-                            placeholder="Wpisz składniki..."
+                            placeholder="Enter ingredients..."
                             required></textarea>
                     </div>
-                    <button type="submit" className="add-meal-btn">Dodaj Posiłek</button>
+                    <button type="submit" className="add-meal-btn">Add meal</button>
                 </form>
 
                 <div className="weekly-plan">
-                    <h2>Twój Tygodniowy Plan</h2>
+                    <h2>Your weekly plan</h2>
                     <div className="days-container">
                         <div className="day" id="monday">
-                            <h3>Poniedziałek</h3>
+                            <h3>Monday</h3>
                             <ul className="meals-list">
                              
                             </ul>
                         </div>
                         <div className="day" id="tuesday">
-                            <h3>Wtorek</h3>
+                            <h3>Tuesday</h3>
                             <ul className="meals-list">
                                 
                             </ul>
                         </div>
                         <div className="day" id="wednesday">
-                            <h3>Środa</h3>
+                            <h3>Wednesday</h3>
                             <ul className="meals-list">
                                 
                             </ul>
@@ -205,19 +207,19 @@ function Plan() {
                             </ul>
                         </div>
                         <div className="day" id="friday">
-                            <h3>Piątek</h3>
+                            <h3>Friday</h3>
                             <ul className="meals-list">
                               
                             </ul>
                         </div>
                         <div className="day" id="saturday">
-                            <h3>Sobota</h3>
+                            <h3>Saturday</h3>
                             <ul className="meals-list">
                                 {renderFridayMeals('saturday')}
                             </ul>
                         </div>
                         <div className="day" id="sunday">
-                            <h3>Niedziela</h3>
+                            <h3>Sunday</h3>
                             <ul className="meals-list">
                                
                             </ul>
