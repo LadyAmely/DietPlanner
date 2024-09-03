@@ -1,5 +1,5 @@
 # DietPlanner
- A web application designed to help users achieve their health and wellness goals through personalized diet plans and a vast database of nutritious recipes. 
+ A web application designed to help users achieve their health and wellness goals through personalized diet plans and a vast database of nutritious recipes. The key features of the app are access to a wide database of dietary recipes with the option to filter by calorie content, preparation time, and diet types, creating your own diet plan and personal profile. 
  
 ## Key Features
 
