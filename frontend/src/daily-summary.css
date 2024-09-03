@@ -15,8 +15,17 @@
 
 .daily-summary h2 {
     text-align: center;
-    color: #333;
     margin-bottom: 20px;
+    color: #2c3e50;
+    font-family: 'Lato', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+    max-width: 80%;
+    margin: 0 auto 20px auto;
 }
 
 .summary-card {
@@ -28,8 +37,15 @@
 }
 
 .summary-card h3 {
-    color: #007BFF;
-    margin-top: 0;
+    margin-bottom: 12px;
+    color: #27ae60;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-left: 4px solid #27ae60;
+    padding-left: 10px;
 }
 
 .goal, .meal-status, .nutrient {

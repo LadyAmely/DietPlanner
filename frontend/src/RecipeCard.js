@@ -16,7 +16,7 @@ function RecipeCard({title, category, image, prep_time, calories, diet_type}){
                 <div><i className="fas fa-calculator"></i>{calories} kcal</div>
             </div>
 
-            <button className="btn details-btn">Details</button>
+            <button className="details-btn">Details</button>
         </div>
     );
 

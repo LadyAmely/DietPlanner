@@ -14,6 +14,8 @@ namespace DietPlanner.Data
         public DbSet<Recipe> recipes { get; set; }
         
         public DbSet<Plan> plans { get; set; }
+        
+        public DbSet<Profile> profile { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Recipe>()
@@ -21,6 +23,9 @@ namespace DietPlanner.Data
 
             modelBuilder.Entity<Plan>()
                 .HasKey(p => p.plan_id);
+
+            modelBuilder.Entity<Profile>()
+                .HasKey(p => p.profile_id);
         }
         
        

@@ -1,10 +1,56 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import './home.css';
 import './daily-summary.css';
 import './meal-plans.css';
 
 import Header from './Header';
 function Home(){
+    
+    const [meals, setMeals] = useState([]);
+
+    const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+    const [currentDayIndex, setCurrentDayIndex] = useState(0);
+
+    const switchDay = () => {
+        setCurrentDayIndex((prevIndex) => (prevIndex + 1) % daysOfWeek.length);
+    };
+
+    const [users, setUser] = useState([]);
+    
+    useEffect(() => {
+        axios.get('http://localhost:5029/api/profile')
+            .then(response => {
+                setUser(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
+    
+    useEffect(() => {
+        axios.get('http://localhost:5029/api/plan')
+            .then(response => {
+                setMeals(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
+
+    function renderDayMeals(day, type) {
+        return meals
+            .filter(meal => meal.day_of_week === day)
+            .filter(meal=>meal.type_of_meal === type)
+            .map((meal, index) => (
+                <div key={index}>
+                    <li>
+                       {meal.title_of_meal} 
+                    </li>
+                </div>
+            ));
+    }
     
     return(
         <div>
@@ -62,62 +108,46 @@ function Home(){
 
             <section className="daily-summary">
                 <div className="container">
-                    <h2>Podsumowanie Dnia</h2>
+                    <h2>Summary of the day</h2>
                     <div className="summary-card">
-                        <h3>Dzienne Cele Dietetyczne</h3>
+                        <h3>Daily Calorie Goal</h3>
                         <div className="goal">
-                            <span>Kalorie:</span>
-                            <span className="goal-value">2000 kcal</span>
+                            <span>Calories:</span>
+                            {users.map(user => (
+                                <span className="goal-value">{user.daily_calorie_goal} kcal</span>
+                            ))}
+                           
                         </div>
                         <div className="goal">
-                            <span>Białko:</span>
+                            <span>Protein:</span>
                             <span className="goal-value">100 g</span>
                         </div>
                         <div className="goal">
-                            <span>Węglowodany:</span>
+                            <span>Carbohydrates:</span>
                             <span className="goal-value">250 g</span>
                         </div>
                         <div className="goal">
-                            <span>Tłuszcze:</span>
+                            <span>Fats:</span>
                             <span className="goal-value">70 g</span>
                         </div>
                     </div>
                     <div className="summary-card">
-                        <h3>Spisane Posiłki</h3>
-                        <div className="meal-status">
-                            <span>Śniadanie:</span>
-                            <span className="status-completed">Zrealizowane</span>
-                        </div>
-                        <div className="meal-status">
-                            <span>Obiad:</span>
-                            <span className="status-completed">Zrealizowane</span>
-                        </div>
-                        <div className="meal-status">
-                            <span>Kolacja:</span>
-                            <span className="status-pending">Oczekujące</span>
-                        </div>
-                        <div className="meal-status">
-                            <span>Przekąski:</span>
-                            <span className="status-completed">Zrealizowane</span>
-                        </div>
-                    </div>
-                    <div className="summary-card">
-                        <h3>Podsumowanie Kalorii i Makroskładników</h3>
+                        <h3>Calorie and Macronutrient Summary</h3>
                         <div className="nutrients">
                             <div className="nutrient">
-                                <span>Kalorie:</span>
+                                <span>Calories:</span>
                                 <span className="nutrient-value">1500 kcal</span>
                             </div>
                             <div className="nutrient">
-                                <span>Białko:</span>
+                                <span>Protein:</span>
                                 <span className="nutrient-value">80 g</span>
                             </div>
                             <div className="nutrient">
-                                <span>Węglowodany:</span>
+                                <span>Carbohydrates:</span>
                                 <span className="nutrient-value">200 g</span>
                             </div>
                             <div className="nutrient">
-                                <span>Tłuszcze:</span>
+                                <span>Fats:</span>
                                 <span className="nutrient-value">60 g</span>
                             </div>
                         </div>
@@ -127,36 +157,33 @@ function Home(){
 
             <section className="meal-plan">
                 <div className="container">
-                    <h2>Plan Posiłków</h2>
+                    <h2>Meals Planner</h2>
                     <div className="meal-plan-header">
-                        <button className="btn toggle-week">Przełącz Tydzień</button>
+                        <button onClick={switchDay} className="btn">Next day</button>
                     </div>
                     <div className="meal-plan-day">
-                        <h3>Dzień: Poniedziałek</h3>
+                        <h3>{daysOfWeek[currentDayIndex]}</h3>
                         <ul className="meal-list">
                             <li className="meal-item">
                                 <div className="meal-info">
-                                    <h4>Śniadanie</h4>
-                                    <p>Owsianka z owocami</p>
+                                    <h3>Breakfast</h3>
+                                    {renderDayMeals(daysOfWeek[currentDayIndex].toLowerCase(), 'breakfast')}
                                 </div>
-                                <button className="btn details-btn">Szczegóły</button>
-                                <button className="btn edit-btn">Edytuj</button>
+                                <button>Details</button>
                             </li>
                             <li className="meal-item">
                                 <div className="meal-info">
-                                    <h4>Obiad</h4>
-                                    <p>Grillowany kurczak z warzywami</p>
+                                    <h3>Lunch</h3>
+                                    {renderDayMeals(daysOfWeek[currentDayIndex].toLowerCase(), 'lunch')}
                                 </div>
-                                <button className="btn details-btn">Szczegóły</button>
-                                <button className="btn edit-btn">Edytuj</button>
+                                <button>Details</button>
                             </li>
                             <li className="meal-item">
                                 <div className="meal-info">
-                                    <h4>Kolacja</h4>
-                                    <p>Sałatka z tuńczykiem</p>
+                                    <h3>Dinner</h3>
+                                    {renderDayMeals(daysOfWeek[currentDayIndex].toLowerCase(), 'dinner')}
                                 </div>
-                                <button className="btn details-btn">Szczegóły</button>
-                                <button className="btn edit-btn">Edytuj</button>
+                                <button>Details</button>
                             </li>
                         </ul>
                     </div>

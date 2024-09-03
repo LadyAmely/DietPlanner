@@ -66,19 +66,26 @@ function Plan() {
         return meals
             .filter(meal => meal.day_of_week === day)
             .map((meal, index) => (
-                <li key={index}>
-                    <h3>{meal.type_of_meal}</h3> : <br/>{meal.title_of_meal} <br/>
-                    <h3>Ingredients</h3> : <br/> {meal.ingredients}
-                </li>
-               
+                <div key={index}>
+
+                    <li>
+                        <h3>{meal.type_of_meal}</h3> : <br/>{meal.title_of_meal} <br/>
+                        <div className="ingredients">
+                            <h3>Ingredients</h3> : <br/> {meal.ingredients}
+                        </div>
+
+                    </li>
+
+
+                </div>
+
             ));
     }
 
-   
 
     return (
         <div>
-            <Header />
+            <Header/>
             <section className="hero">
                 <div className="background-images">
                     <div className="image-container">
@@ -185,19 +192,19 @@ function Plan() {
                         <div className="day" id="monday">
                             <h3>Monday</h3>
                             <ul className="meals-list">
-                             
+                                {renderFridayMeals('monday')}
                             </ul>
                         </div>
                         <div className="day" id="tuesday">
                             <h3>Tuesday</h3>
                             <ul className="meals-list">
-                                
+                                {renderFridayMeals('tuesday')}
                             </ul>
                         </div>
                         <div className="day" id="wednesday">
                             <h3>Wednesday</h3>
                             <ul className="meals-list">
-                                
+                                {renderFridayMeals('wednesday')}
                             </ul>
                         </div>
                         <div className="day" id="thursday">
@@ -209,7 +216,7 @@ function Plan() {
                         <div className="day" id="friday">
                             <h3>Friday</h3>
                             <ul className="meals-list">
-                              
+                                {renderFridayMeals('friday')}
                             </ul>
                         </div>
                         <div className="day" id="saturday">
@@ -221,7 +228,7 @@ function Plan() {
                         <div className="day" id="sunday">
                             <h3>Sunday</h3>
                             <ul className="meals-list">
-                               
+                                {renderFridayMeals('sunday')}
                             </ul>
                         </div>
                     </div>
