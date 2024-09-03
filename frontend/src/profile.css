@@ -1,0 +1,78 @@
+﻿
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: #f0f2f5; /* Jasne tło dla całej strony */
+}
+
+.profile-container {
+    background-color: #ffffff;
+    border-radius: 16px; 
+    padding: 30px; 
+    width: 880px;
+    height: 200px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+
+
+.profile-details {
+    max-width: 200px;
+}
+
+.profile-name {
+    font-size: 24px; 
+    margin-bottom: 10px;
+    color: #222222; 
+    font-weight: bold; 
+}
+
+.profile-info {
+    font-size: 16px; 
+    margin: 8px 0; 
+    color: #555555;
+}
+
+.profile-actions {
+    display: flex;
+    align-items: center;
+}
+
+.edit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px; 
+    border-radius: 50px; 
+    cursor: pointer;
+    font-size: 16px; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 2px 10px rgba(0, 123, 255, 0.2); 
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.4); 
+}
+
+
+.profile-picture-container {
+    position: absolute;
+    margin-top: 3%;
+    margin-left: 5%;
+}
+
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0);
+  
+}

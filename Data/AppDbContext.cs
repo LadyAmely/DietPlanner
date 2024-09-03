@@ -13,13 +13,17 @@ namespace DietPlanner.Data
         
         public DbSet<Recipe> recipes { get; set; }
         
+        public DbSet<Plan> plans { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Recipe>()
-                .HasKey(r => r.recipe_id); 
+                .HasKey(r => r.recipe_id);
 
-           
+            modelBuilder.Entity<Plan>()
+                .HasKey(p => p.plan_id);
         }
+        
+       
     }
 }
 
