@@ -27,6 +27,18 @@ Users can create their own meals by adding them to the diet plan. Each meal can 
 
 ![DietPlanner](https://github.com/LadyAmely/DietPlanner-.NET-React.js-PostgreSQL/blob/master/diet-planner-meal-plan.png)
 
+### Daily Macronutrient Summary
+
+#### Calculating your daily macronutrient requirements
+
+Based on your set calorie goal, the app automatically calculates how many grams of protein, fat, and carbohydrates you should consume each day, according to the recommended proportions.
+
+#### Meal tracking 
+
+Users enter their meals and the app automatically calculates how many calories, protein, fat, and carbohydrate grams they've consumed. This allows users to track their progress toward their goals.
+
+![DietPlanner](https://github.com/LadyAmely/DietPlanner-.NET-React.js-PostgreSQL/blob/master/diet-planner-summary.png)
+
 ### Creating Your Personal Profile
 
 The user profile creation functionality allows for accurate and personalized diet management by entering key personal information, calorie goals, BMI, allergies and dietary restrictions.
