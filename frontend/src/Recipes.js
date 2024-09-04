@@ -92,7 +92,9 @@ function Recipes(){
             </section>
 
             <div className="recipe-select">
-                <input type="text" id="searchInput" placeholder="Search recipes..."/>
+                <input type="text" id="searchInput" placeholder="Search recipes..."
+                       value={searchTerm}
+                       onChange={e => setSearchTerm(e.target.value)}/>
                 <button className="btn search-btn">Search</button>
                 <label htmlFor="diet_type_select_id">Diet Type:</label>
                 <select id="diet_type_select_id" value={dietTypeFilter}

@@ -14,7 +14,7 @@ function Home(){
     const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
     const [currentDayIndex, setCurrentDayIndex] = useState(0);
-
+    
     const switchDay = () => {
         setCurrentDayIndex((prevIndex) => (prevIndex + 1) % daysOfWeek.length);
     };
@@ -96,27 +96,30 @@ function Home(){
         return summary;
     }
 
-    function calculateNutrientMeal(day) {
+    function calculateNutrientForMeal(day) {
+
         const filteredMeals = meals.filter(meal => meal.day_of_week.toLowerCase() === day.toLowerCase());
         const summary = filteredMeals.reduce((acc, meal) => {
             const nutrient = nutrients.find(n => n.name_of_product === meal.title_of_meal);
             if (nutrient) {
-                acc.calories=nutrient.calories;
-                acc.proteins=nutrient.proteins;
-                acc.carbohydrates=nutrient.carbohydrates;
-                acc.fats=nutrient.fats;
+                acc.calories = nutrient.calories;
+                acc.proteins = nutrient.proteins;
+                acc.carbohydrates = nutrient.carbohydrates;
+                acc.fats = nutrient.fats;
             }
             return acc;
         }, { calories: 0, proteins: 0, carbohydrates: 0, fats: 0 });
 
+
+
         return summary;
     }
+    
 
+    
     const currentDay = daysOfWeek[currentDayIndex];
     const nutrientSummary = calculateNutrientSummary(currentDay);
-    const nutrientMeal = calculateNutrientMeal(currentDay);
-    const nutrientBreakfastMeal = calculateNutrientMeal(currentDay);
-
+    
     const [selectedMeal, setSelectedMeal] = useState(null);
 
     const toggleDetails = (mealType) => {
@@ -256,14 +259,6 @@ function Home(){
                                         <div className="meal-details">
                                             <h4>Ingredients:</h4>
                                             <p>{renderDayIngredients(daysOfWeek[currentDayIndex].toLowerCase(), 'breakfast')}</p>
-                                            <h4>Calories:</h4>
-                                            <p>{nutrientBreakfastMeal.calories} kcal</p>
-                                            <h4>Proteins:</h4>
-                                            <p>{nutrientMeal.proteins} g</p>
-                                            <h4>Carbohydrates:</h4>
-                                            <p>{nutrientMeal.carbohydrates} g</p>
-                                            <h4>Fats:</h4>
-                                            <p>{nutrientMeal.fats} g</p>
                                         </div>
                                     )}
                                 </div>
@@ -279,14 +274,6 @@ function Home(){
                                         <div className="meal-details">
                                             <h4>Ingredients:</h4>
                                             <p>{renderDayIngredients(daysOfWeek[currentDayIndex].toLowerCase(), 'lunch')}</p>
-                                            <h4>Calories:</h4>
-                                            <p>{nutrientMeal.calories} kcal</p>
-                                            <h4>Proteins:</h4>
-                                            <p>{nutrientMeal.proteins} g</p>
-                                            <h4>Carbohydrates:</h4>
-                                            <p>{nutrientMeal.carbohydrates} g</p>
-                                            <h4>Fats:</h4>
-                                            <p>{nutrientMeal.fats} g</p>
                                         </div>
                                     )}
                                 </div>
@@ -302,14 +289,6 @@ function Home(){
                                         <div className="meal-details">
                                             <h4>Ingredients:</h4>
                                             <p>{renderDayIngredients(daysOfWeek[currentDayIndex].toLowerCase(), 'dinner')}</p>
-                                            <h4>Calories:</h4>
-                                            <p>{nutrientMeal.calories} kcal</p>
-                                            <h4>Proteins:</h4>
-                                            <p>{nutrientMeal.proteins} g</p>
-                                            <h4>Carbohydrates:</h4>
-                                            <p>{nutrientMeal.carbohydrates} g</p>
-                                            <h4>Fats:</h4>
-                                            <p>{nutrientMeal.fats} g</p>
                                         </div>
                                     )}
                                 </div>
