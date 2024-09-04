@@ -84,6 +84,8 @@ function Home(){
     const currentDay = daysOfWeek[currentDayIndex];
     const nutrientSummary = calculateNutrientSummary(currentDay);
     
+    
+    
     return(
         <div>
             <Header/>
@@ -146,21 +148,28 @@ function Home(){
                         <div className="goal">
                             <span>Calories:</span>
                             {users.map(user => (
-                                <span className="goal-value">{user.daily_calorie_goal} kcal</span>
+                                <span className="highlight-span">{user.daily_calorie_goal} kcal</span>
                             ))}
                            
                         </div>
                         <div className="goal">
                             <span>Protein:</span>
-                            <span className="goal-value">100 g</span>
+                            {users.map(user => (
+                                <span className="highlight-span">{user.daily_calorie_goal * 0.15} - {user.daily_calorie_goal * 0.2}  g</span>
+                            ))}
                         </div>
                         <div className="goal">
                             <span>Carbohydrates:</span>
-                            <span className="goal-value">250 g</span>
+                            {users.map(user => (
+                                <span className="highlight-span">{user.daily_calorie_goal * 0.5} - {user.daily_calorie_goal * 0.6}  g</span>
+                            ))}
                         </div>
                         <div className="goal">
                             <span>Fats:</span>
-                            <span className="goal-value">70 g</span>
+                            {users.map(user => (
+                                <span className="highlight-span">{user.daily_calorie_goal * 0.25} - {user.daily_calorie_goal * 0.3}  g</span>
+                            ))}
+                           
                         </div>
                     </div>
                     <div className="summary-card">
@@ -168,19 +177,19 @@ function Home(){
                         <div className="nutrients">
                             <div className="nutrient">
                                 <span>Calories:</span>
-                                <span className="nutrient-value">{nutrientSummary.calories} kcal</span>
+                                <span className="highlight-span">{nutrientSummary.calories} kcal</span>
                             </div>
                             <div className="nutrient">
                                 <span>Protein:</span>
-                                <span className="nutrient-value">{nutrientSummary.proteins} g</span>
+                                <span className="highlight-span">{nutrientSummary.proteins} g</span>
                             </div>
                             <div className="nutrient">
                                 <span>Carbohydrates:</span>
-                                <span className="nutrient-value">{nutrientSummary.carbohydrates} g</span>
+                                <span className="highlight-span">{nutrientSummary.carbohydrates} g</span>
                             </div>
                             <div className="nutrient">
                                 <span>Fats:</span>
-                                <span className="nutrient-value">{nutrientSummary.fats} g</span>
+                                <span className="highlight-span">{nutrientSummary.fats} g</span>
                             </div>
                         </div>
                     </div>
