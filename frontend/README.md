@@ -42,3 +42,8 @@ Users enter their meals and the app automatically calculates how many calories, 
 ### Creating Your Personal Profile
 
 The user profile creation functionality allows for accurate and personalized diet management by entering key personal information, calorie goals, BMI, allergies and dietary restrictions.
+
+
+## License
+
+This project is licensed under the MIT License.
