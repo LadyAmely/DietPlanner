@@ -65,6 +65,21 @@ function Home(){
             ));
     }
 
+    function renderDayIngredients(day, type) {
+        return meals
+            .filter(meal => meal.day_of_week === day)
+            .filter(meal=>meal.type_of_meal === type)
+            .map((meal, index) => (
+                <div key={index}>
+                    <li>
+                        {meal.ingredients}
+                    </li>
+                </div>
+            ));
+    }
+    
+    
+
     function calculateNutrientSummary(day) {
         const filteredMeals = meals.filter(meal => meal.day_of_week.toLowerCase() === day.toLowerCase());
         const summary = filteredMeals.reduce((acc, meal) => {
@@ -81,11 +96,39 @@ function Home(){
         return summary;
     }
 
+    function calculateNutrientMeal(day) {
+        const filteredMeals = meals.filter(meal => meal.day_of_week.toLowerCase() === day.toLowerCase());
+        const summary = filteredMeals.reduce((acc, meal) => {
+            const nutrient = nutrients.find(n => n.name_of_product === meal.title_of_meal);
+            if (nutrient) {
+                acc.calories=nutrient.calories;
+                acc.proteins=nutrient.proteins;
+                acc.carbohydrates=nutrient.carbohydrates;
+                acc.fats=nutrient.fats;
+            }
+            return acc;
+        }, { calories: 0, proteins: 0, carbohydrates: 0, fats: 0 });
+
+        return summary;
+    }
+
     const currentDay = daysOfWeek[currentDayIndex];
     const nutrientSummary = calculateNutrientSummary(currentDay);
-    
-    
-    
+    const nutrientMeal = calculateNutrientMeal(currentDay);
+    const nutrientBreakfastMeal = calculateNutrientMeal(currentDay);
+
+    const [selectedMeal, setSelectedMeal] = useState(null);
+
+    const toggleDetails = (mealType) => {
+        if (selectedMeal === mealType) {
+            setSelectedMeal(null);
+        } else {
+            setSelectedMeal(mealType);
+        }
+    };
+
+
+
     return(
         <div>
             <Header/>
@@ -209,29 +252,79 @@ function Home(){
                                 <div className="meal-info">
                                     <h3>Breakfast</h3>
                                     {renderDayMeals(daysOfWeek[currentDayIndex].toLowerCase(), 'breakfast')}
+                                    {selectedMeal === 'breakfast' && (
+                                        <div className="meal-details">
+                                            <h4>Ingredients:</h4>
+                                            <p>{renderDayIngredients(daysOfWeek[currentDayIndex].toLowerCase(), 'breakfast')}</p>
+                                            <h4>Calories:</h4>
+                                            <p>{nutrientBreakfastMeal.calories} kcal</p>
+                                            <h4>Proteins:</h4>
+                                            <p>{nutrientMeal.proteins} g</p>
+                                            <h4>Carbohydrates:</h4>
+                                            <p>{nutrientMeal.carbohydrates} g</p>
+                                            <h4>Fats:</h4>
+                                            <p>{nutrientMeal.fats} g</p>
+                                        </div>
+                                    )}
                                 </div>
-                                <button>Details</button>
+                                <button onClick={() => toggleDetails('breakfast')}>
+                                    {selectedMeal === 'breakfast' ? 'Hide Details' : 'Details'}
+                                </button>
                             </li>
                             <li className="meal-item">
                                 <div className="meal-info">
                                     <h3>Lunch</h3>
                                     {renderDayMeals(daysOfWeek[currentDayIndex].toLowerCase(), 'lunch')}
+                                    {selectedMeal === 'lunch' && (
+                                        <div className="meal-details">
+                                            <h4>Ingredients:</h4>
+                                            <p>{renderDayIngredients(daysOfWeek[currentDayIndex].toLowerCase(), 'lunch')}</p>
+                                            <h4>Calories:</h4>
+                                            <p>{nutrientMeal.calories} kcal</p>
+                                            <h4>Proteins:</h4>
+                                            <p>{nutrientMeal.proteins} g</p>
+                                            <h4>Carbohydrates:</h4>
+                                            <p>{nutrientMeal.carbohydrates} g</p>
+                                            <h4>Fats:</h4>
+                                            <p>{nutrientMeal.fats} g</p>
+                                        </div>
+                                    )}
                                 </div>
-                                <button>Details</button>
+                                <button onClick={() => toggleDetails('lunch')}>
+                                    {selectedMeal === 'lunch' ? 'Hide Details' : 'Details'}
+                                </button>
                             </li>
                             <li className="meal-item">
                                 <div className="meal-info">
                                     <h3>Dinner</h3>
                                     {renderDayMeals(daysOfWeek[currentDayIndex].toLowerCase(), 'dinner')}
+                                    {selectedMeal === 'Dinner' && (
+                                        <div className="meal-details">
+                                            <h4>Ingredients:</h4>
+                                            <p>{renderDayIngredients(daysOfWeek[currentDayIndex].toLowerCase(), 'dinner')}</p>
+                                            <h4>Calories:</h4>
+                                            <p>{nutrientMeal.calories} kcal</p>
+                                            <h4>Proteins:</h4>
+                                            <p>{nutrientMeal.proteins} g</p>
+                                            <h4>Carbohydrates:</h4>
+                                            <p>{nutrientMeal.carbohydrates} g</p>
+                                            <h4>Fats:</h4>
+                                            <p>{nutrientMeal.fats} g</p>
+                                        </div>
+                                    )}
                                 </div>
-                                <button>Details</button>
+                                <button onClick={() => toggleDetails('Dinner')}>
+                                    {selectedMeal === 'Dinner' ? 'Hide Details' : 'Details'}
+                                </button>
+                                
+
                             </li>
                         </ul>
                     </div>
                 </div>
             </section>
 
-            
+
         </div>
     );
 }

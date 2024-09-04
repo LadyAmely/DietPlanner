@@ -125,3 +125,23 @@
     
     background-color: #2ecc71;
 }
+
+
+.meal-details {
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.meal-details h4 {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.meal-details p {
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    color: #333;
+}
