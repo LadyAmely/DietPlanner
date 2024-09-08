@@ -15,17 +15,12 @@ This feature allows users to search for recipes based on how long they take to p
 #### Selection by diet type
 The recipe database also allows you to filter by diet type, which is especially useful for people who follow special dietary rules, such as vegan, gluten-free, ketogenic. Users can easily find recipes that meet their dietary preferences and needs.
 
-![DietPlanner](https://github.com/LadyAmely/DietPlanner/blob/master/diet-planner-img.png)
-
-![DietPlanner](https://github.com/LadyAmely/DietPlanner-.NET-React.js-PostgreSQL/blob/master/diet-planner-recipes.png)
-
 ### Creating Your Own Diet Plan
 Users can easily add individual meals and precisely define the ingredients that each one consists of.
 
 #### Adding individual meals
 Users can create their own meals by adding them to the diet plan. Each meal can be customized to your own preferences, allowing you to create a personalized diet plan.
 
-![DietPlanner](https://github.com/LadyAmely/DietPlanner-.NET-React.js-PostgreSQL/blob/master/diet-planner-meal-plan.png)
 
 ### Daily Macronutrient Summary
 
@@ -36,8 +31,6 @@ Based on your set calorie goal, the app automatically calculates how many grams 
 #### Meal tracking 
 
 Users enter their meals and the app automatically calculates how many calories, protein, fat, and carbohydrate grams they've consumed. This allows users to track their progress toward their goals.
-
-![DietPlanner](https://github.com/LadyAmely/DietPlanner-.NET-React.js-PostgreSQL/blob/master/diet-planner-summary.png)
 
 ### Creating Your Personal Profile
 
