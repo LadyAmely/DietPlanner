@@ -87,45 +87,54 @@ function Plan() {
         <div>
             <Header/>
             <section className="hero">
+
                 <div className="background-images">
+
                     <div className="image-container">
                         <img
-                            src="https://th.bing.com/th/id/R.7d5b5e5cd55b25e8c62f26d55c299007?rik=LBpCUVZ88Y4WXA&pid=ImgRaw&r=0"
-                            alt="first" />
+                            src={`${process.env.PUBLIC_URL}/fruits.jpg`}
+                            alt="first"/>
                     </div>
                     <div className="image-container">
                         <img
-                            src="https://th.bing.com/th/id/R.0571c6388470b3528ab5fbe98232fe46?rik=612d1m2PbMvL5g&pid=ImgRaw&r=0"
-                            alt="second" />
+                            src={`${process.env.PUBLIC_URL}/vegetables.jpg`}
+                            alt="second"/>
                     </div>
                     <div className="image-container">
                         <img
-                            src="https://linkiafp.es/wp-content/uploads/2023/02/buddha-bowl-dish-with-vegetables-legumes-top-view-scaled.jpg"
-                            alt="third" />
+                            src={`${process.env.PUBLIC_URL}/eggs.jpg`}
+                            alt="third"/>
                     </div>
                     <div className="image-container">
                         <img
-                            src="https://latinbusinesstoday.com/wp-content/uploads/2022/03/AdobeStock_236139531-fruit-scaled-1.jpeg"
-                            alt="four" />
+                            src={`${process.env.PUBLIC_URL}/fruits2.jpg`}
+                            alt="four"/>
                     </div>
                     <div className="image-container">
                         <img
                             src="https://cdn.dietitiandirectory.com/wp-content/uploads/2022/09/Plant-based-Menu-Items-In-Alberta-Restaurants.jpg"
-                            alt="five" />
+                            alt="five"/>
                     </div>
                     <div className="image-container">
                         <img
-                            src="https://www.hellozdrowie.pl/wp-content/uploads/2022/04/istock-1323727763-1140x760.jpg"
-                            alt="six" />
+                            src={`${process.env.PUBLIC_URL}/fruits3.jpg`}
+                            alt="six"/>
                     </div>
-                </div>
-                <div className="blur-container">
-                    <h2>DietPlanner</h2>
-                    <p>Eat better every day and transform your life with balanced nutrition and mindful eating habits.</p>
-                    <button>Start Now</button>
-                </div>
-            </section>
 
+
+                </div>
+
+                <div className="blur-container">
+
+                    <h2>DietPlanner</h2>
+                    <p>Eat better every day and transform your life with balanced nutrition and mindful eating
+                        habits.</p>
+                    <button>Start Now</button>
+
+                </div>
+
+
+            </section>
             <section className="meal-planner-section">
                 <h1>Your Meal Plan</h1>
                 <form className="meal-form" onSubmit={handleSubmit}>
@@ -171,7 +180,7 @@ function Plan() {
                             value={formData.title_of_meal}
                             onChange={handleInputChange}
                             placeholder="e.g. Oatmeal with fruit"
-                            required />
+                            required/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="ingredients">Ingredients:</label>
