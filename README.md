@@ -17,6 +17,7 @@ This feature allows users to search for recipes based on how long they take to p
 #### Selection by diet type
 The recipe database also allows you to filter by diet type, which is especially useful for people who follow special dietary rules, such as vegan, gluten-free, ketogenic. Users can easily find recipes that meet their dietary preferences and needs.
 
+![DietPlanner](https://github.com/LadyAmely/DietPlanner-.NET-React.js-PostgreSQL/blob/master/diet-planner-recipes.png)
 ### Creating Your Own Diet Plan
 Users can easily add individual meals and precisely define the ingredients that each one consists of.
 
